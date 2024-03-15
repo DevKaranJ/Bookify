@@ -23,9 +23,10 @@ const BookDetail = ({ dispatch, book }) => {
       <p>by {book.author}</p>
       <p>Genre: {book.genre}</p>
       <p>{book.description}</p>
-      <p>Rental Price: {book.rental_price}</p>
+      <p>Rental Price per month: {book.rental_price}</p>
       <p>Available for Rent: {book.available_for_rent ? 'Yes' : 'No'}</p>
       <p>Condition: {book.condition}</p>
+      <button type="button">Add to favourite</button>
     </div>
   );
 };
