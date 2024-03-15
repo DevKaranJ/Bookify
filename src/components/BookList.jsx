@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchBooks } from '../actions/bookActions';
-import { PropTypes } from 'prop-types';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const BookList = ({ dispatch, books }) => {
   useEffect(() => {
@@ -18,10 +17,11 @@ const BookList = ({ dispatch, books }) => {
     <div>
       {books.map(book => (
         <div key={book.id}>
-          <h2>{book.name}</h2>
+          <img src={book.image} alt={book.title} />
+          <h2>{book.title}</h2>
+          <p> by author </p>
+          <p>{book.author}</p>
           <p>{book.description}</p>
-          <p>{book.renting_fee}</p>
-          <p>{book.image}</p>
         </div>
       ))}
     </div>
