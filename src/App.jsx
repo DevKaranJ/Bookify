@@ -1,21 +1,23 @@
-// src/App.js
+import React from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import store from './store';
 import BookList from './components/BookList';
 import BookDetail from './components/BookDetail';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navigation from './components/Navigation';
 
 function App() {
-  return (
-    <Provider store={store}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<BookList />} />
-          <Route path="/book/:id" element={<BookDetail />} />
-        </Routes>
-      </Router>
-    </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <Router>
+                <Navigation />
+                <Routes>
+                    <Route path="/" element={<BookList />} />
+                    <Route path="/book/:id" element={<BookDetail />} />
+                </Routes>
+            </Router>
+        </Provider>
+    );
 }
 
 export default App;
