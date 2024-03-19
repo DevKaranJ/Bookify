@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("api/login", {
+      const response = await fetch("http://localhost:3000/api/v1/auth/sign_in", {
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
@@ -24,7 +24,7 @@ const Login = () => {
 
       const result = await response.json();
       localStorage.setItem("user-info", JSON.stringify(result));
-      history.push('/dashboard');
+      navigate('/dashboard');
     } catch (error) {
       setError('Invalid email or password. Please try again.');
     }

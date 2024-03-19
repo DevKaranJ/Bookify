@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  const handleRegistration = async () => {
-    const userData = { name, email, password };
+  const handleRegistration = async (event) => {
+    event.preventDefault();
+    const userData = { 
+      name: name, 
+      email: email, 
+      password: password, 
+      confirm_success_url: 'http://localhost:5173' 
+    };
 
     try {
-      // Perform client-side validation if needed
-
-      // Send registration data to server
-      const response = await fetch("api/register", {
+      const response = await fetch("http://localhost:3000/api/v1/auth", {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -27,15 +30,12 @@ const SignUp = () => {
         throw new Error('Registration failed');
       }
 
-      // Registration successful, redirect to login page
-      history.push('/Login');
+      navigate('/Login');
 
-      // Optionally, handle response data
       const result = await response.json();
       localStorage.setItem("user-info", JSON.stringify(result));
     } catch (error) {
       console.error('Error during registration:', error.message);
-      // Optionally, display an error message to the user
     }
   };
 
