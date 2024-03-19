@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import store from './store';
 import BookList from './components/BookList';
 import BookDetail from './components/BookDetail';
-import Navigation from './components/Navigation';
+import Navigation from './components/NavPanel/Navigation';
 
 function App() {
     return (
