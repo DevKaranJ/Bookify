@@ -6,6 +6,7 @@ import Login from './components/auth/Login';
 import SignUp from './components/auth/SignUp';
 import BookList from './components/homepage/BookList';
 import BookDetail from './components/homepage/BookDetail';
+import Navigation from './components/NavPanel/Navigation';
 import { Provider } from 'react-redux';
 
 
@@ -17,6 +18,8 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
+      <Navigation />
+
         <div>
           <Routes>
             <Route path="/" element={<Login />} />
