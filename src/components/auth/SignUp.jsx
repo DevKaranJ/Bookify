@@ -30,7 +30,7 @@ const SignUp = () => {
         throw new Error('Registration failed');
       }
 
-      navigate('/Login');
+      navigate('/');
 
       const result = await response.json();
       localStorage.setItem("user-info", JSON.stringify(result));
