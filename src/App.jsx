@@ -1,20 +1,18 @@
-// src/App.js
-import { Provider } from 'react-redux';
-import store from './store';
-import BookList from './components/BookList';
-import BookDetail from './components/BookDetail';
+import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './component/auth/Login';
+import SignUp from './component/auth/SignUp';
 
 function App() {
   return (
-    <Provider store={store}>
-      <Router>
+    <Router>
+      <div>
         <Routes>
-          <Route path="/" element={<BookList />} />
-          <Route path="/book/:id" element={<BookDetail />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
-      </Router>
-    </Provider>
+      </div>
+    </Router>
   );
 }
 
