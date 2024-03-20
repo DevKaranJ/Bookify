@@ -1,7 +1,6 @@
-// src/components/BookDetail.jsx
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchBookDetails } from '../actions/bookActions';
+import { fetchBookDetails } from '../../actions/bookActions';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 
