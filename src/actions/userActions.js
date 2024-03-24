@@ -17,7 +17,9 @@ export const userRegister = (userData) => async (dispatch) => {
         }
 
         const result = await response.json();
-        localStorage.setItem("user-info", JSON.stringify(result));
+        localStorage.setItem('access-token', response.headers.get('access-token'));
+        localStorage.setItem('client', response.headers.get('client'));
+        localStorage.setItem('uid', response.headers.get('uid'));
         dispatch(registerUser(result));
     }
     catch (error) {
@@ -43,7 +45,9 @@ export const userLogin = (userData) => async (dispatch) => {
         }
 
         const result = await response.json();
-        localStorage.setItem("user-info", JSON.stringify(result));
+        localStorage.setItem('access-token', response.headers.get('access-token'));
+        localStorage.setItem('client', response.headers.get('client'));
+        localStorage.setItem('uid', response.headers.get('uid'));
         dispatch(loginUser(result));
     }
     catch (error) {
