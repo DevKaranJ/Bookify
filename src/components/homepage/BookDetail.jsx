@@ -16,16 +16,20 @@ const BookDetail = ({ dispatch, book }) => {
   }
 
   return (
-    <div>
-      <img src={book.cover_image_url} alt={book.title} />
-      <h2>{book.title}</h2>
-      <p>by {book.author}</p>
-      <p>Genre: {book.genre}</p>
-      <p>{book.description}</p>
-      <p>Rental Price per month: {book.rental_price}</p>
-      <p>Available for Rent: {book.available_for_rent ? 'Yes' : 'No'}</p>
-      <p>Condition: {book.condition}</p>
-      <button type="button">Add to favourite</button>
+    <div className="flex flex-col md:flex-row bg-white shadow-xl rounded-lg p-6 md:p-0 w-full h-full md:h-auto md:w-3/4 mx-auto">
+      <div className="w-full md:w-1/2">
+        <img className="rounded-lg w-full h-64 object-cover md:h-full md:w-full" src={book.cover_image_url} alt={book.title} />
+      </div>
+      <div className="w-full md:w-1/2 p-4">
+        <h2 className="text-xl font-semibold">{book.title}</h2>
+        <p className="text-gray-700">by {book.author}</p>
+        <p className="text-gray-700">Genre: {book.genre}</p>
+        <p className="text-gray-700 mt-2">{book.description}</p>
+        <p className="text-gray-700">Rental Price per month: {book.rental_price}</p>
+        <p className="text-gray-700">Available for Rent: {book.available_for_rent ? 'Yes' : 'No'}</p>
+        <p className="text-gray-700">Condition: {book.condition}</p>
+        <button className="mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" type="button">Add to favourite</button>
+      </div>
     </div>
   );
 };
