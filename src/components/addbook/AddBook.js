@@ -8,12 +8,30 @@ import { useNavigate } from 'react-router-dom';
 const AddBook = () => {
   const dispatch = useDispatch();
   const { userInfo } = useSelector(state => state.user);
+  const [formData, setFormData] = useState({
+    title: '',
+    author: '',
+    genre: '',
+    description: '',
+    cover_image_url: '',
+    rental_price: '',
+    available_for_rent: '',
+    condition: '',
+    user_id: '' 
+  });
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmitBook = (e) => {
     const userId = userInfo.data.id
     e.preventDefault();
     dispatch(addBook(formData, userId));
   };
+
+
 
   return (
     <form className="create-book-form" onSubmit={handleSubmitBook}>
