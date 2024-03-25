@@ -1,34 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { userLogin } from '../../actions/userActions';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { userInfo, error } = useSelector(state => state.user);
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch("http://localhost:3000/api/v1/auth/sign_in", {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email, password })
-      });
-
-      if (!response.ok) {
-        throw new Error('Login failed');
-      }
-
-      const result = await response.json();
-      localStorage.setItem("user-info", JSON.stringify(result));
-      navigate('/booklist');
-    } catch (error) {
-      setError('Invalid email or password. Please try again.');
-    }
+    dispatch(userLogin({ email, password }));
   };
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/booklist');
+    }
+  }, [navigate, userInfo]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">

@@ -1,13 +1,17 @@
+// src/components/auth/SignUp.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { userRegister } from '../../actions/userActions';
 
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleRegistration = async (event) => {
+  const handleRegistration = (event) => {
     event.preventDefault();
     const userData = { 
       name: name, 
@@ -16,27 +20,8 @@ const SignUp = () => {
       confirm_success_url: 'http://localhost:5173' 
     };
 
-    try {
-      const response = await fetch("http://localhost:3000/api/v1/auth", {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(userData)
-      });
-
-      if (!response.ok) {
-        throw new Error('Registration failed');
-      }
-
-      navigate('/');
-
-      const result = await response.json();
-      localStorage.setItem("user-info", JSON.stringify(result));
-    } catch (error) {
-      console.error('Error during registration:', error.message);
-    }
+    dispatch(userRegister(userData));
+    navigate('/');
   };
 
   return (
