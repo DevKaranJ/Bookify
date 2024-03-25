@@ -45,19 +45,25 @@ export const addToFavorites = (bookId) => {
       try {
         // Extract user information from the Redux state
         const userData = getState().user.userInfo;
+        console.log(userData);
+        console.log(userData.data.id)
+        const userId = userData.data.id;
         
         // Check if user data is available and contains the user ID
-        if (userData && userData.id) {
-          const userId = userData.id;
+       // if (userData && userData.id) {
+          //const userId = userData.data.id;
+          //console.log(userId);
+
   
           // Make the API request to add the book to favorites using the user ID
-          const response = await axios.post(`/api/v1/users/${userId}/favorites`, { book_id: bookId });
+          const response = await axios.post(`/api/v1/users/${userId}/favorites`, {user_id: userId, book_id: bookId });
+          console.log(response)
           dispatch(addToFavoritesSuccess(response.data.data));
-        } else {
+        } /*else {
           // If user ID is not available, dispatch an action with an error message
           throw new Error('User ID not available');
         }
-      } catch (error) {
+      }*/ catch (error) {
         // Dispatch an action with the error message if the request fails
         dispatch(addToFavoritesFailure(error.message));
       }
