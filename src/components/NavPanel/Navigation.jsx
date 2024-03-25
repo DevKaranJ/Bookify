@@ -1,8 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
 const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false);
+
+    const location = useLocation();
+
+  // Check if the current location is either sign-in or sign-up
+  const isAuthPage = location.pathname === '/' || location.pathname === '/signup';
+
+  // If it's an authentication page, don't render the navigation
+  if (isAuthPage) {
+    return null;
+  }
 
     return (
         <nav className="flex items-center justify-between flex-wrap bg-gray-500 p-6">
