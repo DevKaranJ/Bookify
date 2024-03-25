@@ -1,13 +1,14 @@
 // CreateBookForm.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBook } from '../../actions/bookActions';
 import { useNavigate } from 'react-router-dom';
 
 const AddBook = () => {
   const dispatch = useDispatch();
-  const { userInfo } = useSelector(state => state.user);
+  const navigate = useNavigate();
+  const { userInfo, isAdded } = useSelector(state => state.user);
   const [formData, setFormData] = useState({
     title: '',
     author: '',
@@ -26,12 +27,17 @@ const AddBook = () => {
   };
 
   const handleSubmitBook = (e) => {
+    console.log('book submission start');
     const userId = userInfo.data.id
     e.preventDefault();
     dispatch(addBook(formData, userId));
   };
 
-
+  useEffect(() => {
+    if (isAdded) {
+      navigate('/booklist');
+    }
+  }, [isAdded]);
 
   return (
     <form className="create-book-form" onSubmit={handleSubmitBook}>
