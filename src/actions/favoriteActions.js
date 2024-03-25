@@ -39,54 +39,54 @@ export const fetchFavoritesFailure = (error) => ({
 
 // Thunk action for adding a book to favorites
 export const addToFavorites = (bookId) => {
+    const headers = {
+      'access-token': localStorage.getItem('access-token'),
+      'client': localStorage.getItem('client'),
+      'uid': localStorage.getItem('uid')
+    };
+    if (!headers['access-token'] || !headers['client'] || !headers['uid']) {
+      console.error('User is not authenticated');
+      return;
+    }
     return async (dispatch, getState) => {
       dispatch(addToFavoritesRequest());
-  
       try {
-        // Extract user information from the Redux state
         const userData = getState().user.userInfo;
         console.log(userData);
-        console.log(userData.data.id)
         const userId = userData.data.id;
-        
-        // Check if user data is available and contains the user ID
-       // if (userData && userData.id) {
-          //const userId = userData.data.id;
-          //console.log(userId);
-
-  
-          // Make the API request to add the book to favorites using the user ID
-          const response = await axios.post(`/api/v1/users/${userId}/favorites`, {user_id: userId, book_id: bookId });
-          console.log(response)
-          dispatch(addToFavoritesSuccess(response.data.data));
-        } /*else {
-          // If user ID is not available, dispatch an action with an error message
-          throw new Error('User ID not available');
-        }
-      }*/ catch (error) {
-        // Dispatch an action with the error message if the request fails
+        console.log(userId, bookId);
+        const response = await axios.post(`http://127.0.0.1:3000/api/v1/users/${userId}/favorites`, {
+          headers,
+          book_id: bookId // Only include book_id if needed
+        });
+        console.log(response);
+        // dispatch(addToFavoritesSuccess(response.data.data)); // Uncomment if needed
+      } catch (error) {
         dispatch(addToFavoritesFailure(error.message));
       }
     };
   };
   
-  
-
-// Thunk action for fetching user's favorite books
-export const fetchFavorites = () => {
+  export const fetchFavorites = (bookId) => {
+    const headers = {
+      'access-token': localStorage.getItem('access-token'),
+      'client': localStorage.getItem('client'),
+      'uid': localStorage.getItem('uid')
+    };
+    if (!headers['access-token'] || !headers['client'] || !headers['uid']) {
+      console.error('User is not authenticated');
+      return;
+    }
     return async (dispatch, getState) => {
-      dispatch(fetchFavoritesRequest());
-  
+      dispatch(addToFavoritesRequest());
       try {
         const userData = getState().user.userInfo;
-        const userId = userData && userData.id;
-  
-        if (!userId) {
-          throw new Error('User ID not available');
-        }
-  
-        const response = await axios.get(`/api/v1/users/${userId}/favorites`);
-        dispatch(fetchFavoritesSuccess(response.data.data));
+        console.log(userData);
+        const userId = userData.data.id;
+        console.log(userId); // No need to log bookId here (already sent in the request)
+        const response = await axios.get(`http://127.0.0.1:3000/api/v1/users/${userId}/favorites`); // Use GET method
+        console.log(response);
+        // dispatch(addToFavoritesSuccess(response.data.data));  // Uncomment if needed
       } catch (error) {
         dispatch(fetchFavoritesFailure(error.message));
       }
