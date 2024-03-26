@@ -36,8 +36,40 @@ export const fetchFavoritesFailure = (error) => ({
   type: FETCH_FAVORITES_FAILURE,
   payload: error,
 });
-
-// Thunk action for adding a book to favorites
+  
+export const fetchFavorites = () => {
+    const headers = {
+      'access-token': localStorage.getItem('access-token'),
+      'client': localStorage.getItem('client'),
+      'uid': localStorage.getItem('uid')
+    };
+  
+    if (!headers['access-token'] || !headers['client'] || !headers['uid']) {
+      console.error('User is not authenticated');
+      return;
+    }
+  
+    return async (dispatch, getState) => {
+      dispatch(fetchFavoritesRequest());
+      try {
+        const userId = getState().user.userInfo.data.id;
+        console.log(userId,bookId)
+  
+        const response = await axios.get(
+          `http://127.0.0.1:3000/api/v1/users/${userId}/favorites`,
+          {
+            headers: headers
+          }
+        );
+  
+        dispatch(fetchFavoritesSuccess(response.data.data));
+      } catch (error) {
+        dispatch(fetchFavoritesFailure(error.message));
+      }
+    };
+  };
+  
+  // Thunk action for adding a book to favorites
 export const addToFavorites = (bookId) => {
     const headers = {
       'access-token': localStorage.getItem('access-token'),
@@ -56,39 +88,14 @@ export const addToFavorites = (bookId) => {
         const userId = userData.data.id;
         console.log(userId, bookId);
         const response = await axios.post(`http://127.0.0.1:3000/api/v1/users/${userId}/favorites`, {
-          headers,
-          book_id: bookId // Only include book_id if needed
+          book_id: bookId
+        }, {
+          headers: headers
         });
         console.log(response);
-        // dispatch(addToFavoritesSuccess(response.data.data)); // Uncomment if needed
+        dispatch(addToFavoritesSuccess(response.data.data));
       } catch (error) {
         dispatch(addToFavoritesFailure(error.message));
-      }
-    };
-  };
-  
-  export const fetchFavorites = (bookId) => {
-    const headers = {
-      'access-token': localStorage.getItem('access-token'),
-      'client': localStorage.getItem('client'),
-      'uid': localStorage.getItem('uid')
-    };
-    if (!headers['access-token'] || !headers['client'] || !headers['uid']) {
-      console.error('User is not authenticated');
-      return;
-    }
-    return async (dispatch, getState) => {
-      dispatch(addToFavoritesRequest());
-      try {
-        const userData = getState().user.userInfo;
-        console.log(userData);
-        const userId = userData.data.id;
-        console.log(userId); // No need to log bookId here (already sent in the request)
-        const response = await axios.get(`http://127.0.0.1:3000/api/v1/users/${userId}/favorites`); // Use GET method
-        console.log(response);
-        // dispatch(addToFavoritesSuccess(response.data.data));  // Uncomment if needed
-      } catch (error) {
-        dispatch(fetchFavoritesFailure(error.message));
       }
     };
   };

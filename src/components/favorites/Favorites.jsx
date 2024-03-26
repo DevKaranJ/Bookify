@@ -8,24 +8,27 @@ const Favorites = () => {
 
   useEffect(() => {
     dispatch(fetchFavorites());
+    console.log("Fetched favorites:", favorites);
   }, [dispatch]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   return (
     <div>
       <h2>My Favorites</h2>
-      <ul>
-        {favorites.map((favorite) => (
-          <li key={favorite.id}>{favorite.book.title}</li>
-        ))}
-      </ul>
+      {loading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>Error: {error}</div>
+      ) : favorites.length > 0 ? (
+        <ul>
+          {favorites.map((favorite) => (
+            <li key={favorite.id}>
+              {favorite.book ? favorite.book.title : 'Unknown Title'}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div>No favorites yet.</div>
+      )}
     </div>
   );
 };
