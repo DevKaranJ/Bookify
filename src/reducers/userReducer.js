@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
     name: "user",
     initialState: {
-        userInfo: null, error: null
+        userInfo: null, userId: '', error: null
     },
     reducers: {
         registerUser: (state, action) => {
@@ -14,6 +14,7 @@ const userSlice = createSlice({
         },
         loginUser: (state, action) => {
             state.userInfo = action.payload;
+            state.userId = action.payload.data.id;
         },
         loginError: (state, action) => {
             state.error = action.payload;
