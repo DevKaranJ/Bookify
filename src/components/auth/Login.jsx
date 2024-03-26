@@ -10,7 +10,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const { userInfo, error } = useSelector(state => state.user);
 
-  console.log(userInfo)
   const handleLogin = async (e) => {
     e.preventDefault();
     dispatch(userLogin({ email, password }));
