@@ -9,6 +9,7 @@ import BookDetail from './components/homepage/BookDetail';
 import Navigation from './components/NavPanel/Navigation';
 import { Provider } from 'react-redux';
 import AddBook from './components/addbook/AddBook';
+import DeleteBook from './components/deletebook/DeleteBook';
 
 
 const store = configureStore({
@@ -28,6 +29,7 @@ function App() {
             <Route path="/booklist" element={<BookList />} />
             <Route path="/book/:id" element={<BookDetail />} />
             <Route path="/addbook" element={<AddBook />} />
+            <Route path="/deletebook" element={<DeleteBook />} />
           </Routes>
         </div>
       </Router>
