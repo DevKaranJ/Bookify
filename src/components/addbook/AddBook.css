@@ -42,6 +42,11 @@ h2.addbook-form-title {
   background-color: #fcfcfc;
 }
 
+.form-input,
+.form-textarea {
+  color: #6c6c6c;
+}
+
 .form-checkbox {
   appearance: none;
   -webkit-appearance: none;
@@ -97,3 +102,16 @@ h2.addbook-form-title {
 .form-submit-button:hover {
   background-color: #db3506;
 }
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}
+

@@ -49,8 +49,9 @@ export const addABook = (bookData) => async dispatch => {
       headers: headers,
     });
 
-    dispatch({ type: 'ADD_BOOK', payload: response.data });
+    dispatch({ type: 'ADD_BOOK_SUCCESS', payload: response.data });
   } catch (error) {
+    dispatch({ type: 'ADD_BOOK_FAILURE', payload: error.response.data.errors[0] });
     console.error('Error adding book:', error);
   }
 };
