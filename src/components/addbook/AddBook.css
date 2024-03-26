@@ -103,15 +103,16 @@ h2.addbook-form-title {
   background-color: #db3506;
 }
 
-.error-message {
+.error-message,
+.success-message {
   color: red;
-  font-weight: bold;
-  margin-top: 10px;
+  font-size: 14px;
+  margin-top: -12px;
+  margin-bottom: 5px;
+  text-align: center;
 }
 
 .success-message {
   color: green;
-  font-weight: bold;
-  margin-top: 10px;
 }
 

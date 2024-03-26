@@ -40,7 +40,7 @@ const AddBook = () => {
   useEffect(() => {
     if (isAdded && isSubmitted) {
       setMessage('Book is Successfully Added');
-      navigate('/booklist');
+      navigate('/addbook');
     } else if (error && isSubmitted) {
       setMessage('Sorry, something happened');
     }
