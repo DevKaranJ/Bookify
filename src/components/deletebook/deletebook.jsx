@@ -48,7 +48,7 @@ const DeleteBook = ({ dispatch, books }) => {
                 onClick={() => handleDeleteBook(book.id)} 
                 className={`mt-2 block text-lg leading-7 font-semibold text-white py-2 px-4 rounded-lg transition duration-300 ease-in-out ${selectedBooks.includes(book.id) ? 'bg-gray-600 hover:bg-gray-700 text-sm' : 'bg-red-600 hover:bg-red-700'}`}
               >
-                {selectedBooks.includes(book.id) ? "Remove" : "Delete"}
+                {selectedBooks.includes(book.id) ? "Removed" : "Delete"}
               </button>
             </div>
           </div>
