@@ -58,22 +58,47 @@ export const addABook = (bookData) => async dispatch => {
 
 // delete book fetch
 
-// export const deleteBooksFetch = (userId) => async dispatch => {
-//   console.log(userId)
-//   const headers = {
-//     'access-token': localStorage.getItem('access-token'),
-//     'client': localStorage.getItem('client'),
-//     'uid': localStorage.getItem('uid')
-//   };
+export const deleteBooks = (userId) => async dispatch => {
+  console.log(userId)
+  const headers = {
+    'access-token': localStorage.getItem('access-token'),
+    'client': localStorage.getItem('client'),
+    'uid': localStorage.getItem('uid')
+  };
 
-//   if (!headers['access-token'] || !headers['client'] || !headers['uid']) {
-//     console.error('User is not authenticated');
-//     return;
-//   }
+  if (!headers['access-token'] || !headers['client'] || !headers['uid']) {
+    console.error('User is not authenticated');
+    return;
+  }
 
-//   const response = await axios.get('http://127.0.0.1:3000/api/v1/books/mybooks', { 
-//     headers,
-//     user_id: userId,
-//   });
-//   dispatch({ type: 'USER_BOOKS_FETCH_SUCCESS', payload: response.data });
-// };
+  const response = await axios.get('http://127.0.0.1:3000/api/v1/books/mybooks', { 
+    headers,
+    user_id: userId,
+  });
+  dispatch({ type: 'USER_BOOKS_FETCH_SUCCESS', payload: response.data });
+};
+
+
+export const deleteBook = (bookIds) => async (dispatch) => {
+  const headers = {
+    'access-token': localStorage.getItem('access-token'),
+    'client': localStorage.getItem('client'),
+    'uid': localStorage.getItem('uid')
+  };
+
+  if (!headers['access-token'] || !headers['client'] || !headers['uid']) {
+    console.error('User is not authenticated');
+    return;
+  }
+
+  try {
+    const response = await axios.delete('http://127.0.0.1:3000/api/v1/books/delete', {
+      headers,
+      data: { bookIds }
+    });
+
+    dispatch({ type: 'DELETE_BOOKS_SUCCESS', payload: response.data });
+  } catch (error) {
+    dispatch({ type: 'DELETE_BOOKS_FAILURE', payload: error.message });
+  }
+};
