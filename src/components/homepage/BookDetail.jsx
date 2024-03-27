@@ -39,7 +39,9 @@ const BookDetail = ({ dispatch, book, isAuthenticated }) => { // Add isAuthentic
         <p className="text-gray-700 mt-4">Rental Price per month: <span className="font-semibold">{book.rental_price}</span></p>
         <p className="text-gray-700">Available for Rent: <span className="font-semibold">{book.available_for_rent ? 'Yes' : 'No'}</span></p>
         <p className="text-gray-700">Condition: <span className="font-semibold">{book.condition}</span></p>
-        <button className="mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" type="button">Add to favourite</button>
+        <button onClick={handleAddToFavorites}
+         className="mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" type="button">
+          Add to favourite</button>
       </div>
     </div>
   );

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addABook } from '../../actions/bookActions';
 import { useNavigate } from 'react-router-dom';
-import './AddBook.css';
 
 const AddBook = () => {
   const dispatch = useDispatch();

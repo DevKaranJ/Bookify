@@ -20,7 +20,7 @@ const SignUp = () => {
     };
 
     dispatch(userRegister(userData));
-    navigate('/');
+    navigate('/Login');
   };
 
   return (
@@ -47,7 +47,7 @@ const SignUp = () => {
                 name="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+                className='w-full border-2 border-gray-100 text-black rounded-xl p-4 mt-1 bg-transparent'
                 placeholder="Enter your email"
                 required />
             </div>
@@ -58,7 +58,7 @@ const SignUp = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+                className='w-full border-2 border-gray-100 text-black rounded-xl p-4 mt-1 bg-transparent'
                 placeholder="Enter your password"
                 required />
             </div>
