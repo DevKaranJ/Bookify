@@ -32,10 +32,10 @@ const Navigation = () => {
                     <Link to="/favorites" className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
                         My Favorites
                     </Link>
-                    <Link to="/add" className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
+                    <Link to="/addbook" className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
                         Add Book
                     </Link>
-                    <Link to="/delete" className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white">
+                    <Link to="/deletebook" className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white">
                         Delete Book
                     </Link>
                 </div>

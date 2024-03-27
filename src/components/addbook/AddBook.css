@@ -1,0 +1,118 @@
+.add-book-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-book-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+h2.addbook-form-title {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+
+.form-label {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  color: #000;
+}
+
+.form-input,
+.form-textarea,
+.form-checkbox,
+.form-submit-button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fcfcfc;
+}
+
+.form-input,
+.form-textarea {
+  color: #6c6c6c;
+}
+
+.form-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px !important;
+  height: 20px !important;
+  background-color: #fcfcfc;
+  border: 1px solid #ccc;
+  position: relative;
+}
+
+.form-checkbox:checked::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  background-color: #f65618;
+  border-radius: 3px;
+}
+
+.form-checkbox + label {
+  color: #fcfcfc;
+}
+
+.form-input:hover,
+.form-textarea:hover,
+.form-checkbox:hover,
+.form-submit-button:hover {
+  border: 1px solid #f65618;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-checkbox:focus,
+.form-submit-button:focus {
+  border: 1px solid #f65618 !Important;
+}
+
+.form-checkbox {
+  width: auto;
+}
+
+.form-submit-button {
+  background-color: #f65618;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.form-submit-button:hover {
+  background-color: #db3506;
+}
+
+.error-message,
+.success-message {
+  color: red;
+  font-size: 14px;
+  margin-top: -12px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.success-message {
+  color: green;
+}
+
