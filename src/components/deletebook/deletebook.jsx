@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { fetchBooks } from '../../actions/bookActions';
+import { fetchBooks, deleteBook } from '../../actions/bookActions'; // Import deleteBook action
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const BookList = ({ dispatch, books }) => {
+const DeleteBook = ({ dispatch, books }) => {
   useEffect(() => {
     dispatch(fetchBooks());
   }, [dispatch]);
 
-  BookList.propTypes = {
+  DeleteBook.propTypes = {
     dispatch: PropTypes.func.isRequired,
     books: PropTypes.array.isRequired
   };
@@ -25,7 +25,9 @@ const BookList = ({ dispatch, books }) => {
     } else {
       setSelectedBooks([...selectedBooks, bookId]);
     }
+    dispatch(deleteBook(bookId));
   };
+  
 
   useEffect(() => {
     localStorage.setItem('selectedBooks', JSON.stringify(selectedBooks));
@@ -58,4 +60,4 @@ const BookList = ({ dispatch, books }) => {
 
 const mapStateToProps = state => ({ books: state.books.list });
 
-export default connect(mapStateToProps)(BookList);
+export default connect(mapStateToProps)(DeleteBook);

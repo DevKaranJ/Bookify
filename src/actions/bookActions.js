@@ -79,7 +79,7 @@ export const deleteBooks = (userId) => async dispatch => {
 };
 
 
-export const deleteBook = (bookIds) => async (dispatch) => {
+export const deleteBook = (bookId) => async (dispatch) => {
   const headers = {
     'access-token': localStorage.getItem('access-token'),
     'client': localStorage.getItem('client'),
@@ -92,9 +92,9 @@ export const deleteBook = (bookIds) => async (dispatch) => {
   }
 
   try {
-    const response = await axios.delete('http://127.0.0.1:3000/api/v1/books/delete', {
+    const response = await axios.delete(`http://127.0.0.1:3000/api/v1/books/${bookId}`, {
       headers,
-      data: { bookIds }
+      data: { bookId }
     });
 
     dispatch({ type: 'DELETE_BOOKS_SUCCESS', payload: response.data });
