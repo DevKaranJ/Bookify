@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchBooks } from '../../actions/bookActions';
 import PropTypes from 'prop-types';
@@ -14,7 +14,10 @@ const BookList = ({ dispatch, books }) => {
     books: PropTypes.array.isRequired
   };
 
-  const [selectedBooks, setSelectedBooks] = useState([]);
+  const [selectedBooks, setSelectedBooks] = useState(() => {
+    const storedSelectedBooks = localStorage.getItem('selectedBooks');
+    return storedSelectedBooks ? JSON.parse(storedSelectedBooks) : [];
+  });
 
   const handleDeleteBook = (bookId) => {
     if (selectedBooks.includes(bookId)) {
@@ -23,6 +26,10 @@ const BookList = ({ dispatch, books }) => {
       setSelectedBooks([...selectedBooks, bookId]);
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem('selectedBooks', JSON.stringify(selectedBooks));
+  }, [selectedBooks]);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
