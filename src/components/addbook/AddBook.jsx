@@ -46,26 +46,43 @@ const AddBook = () => {
   }, [isAdded, isSubmitted, error, navigate]);
 
   return (
-    <div className="add-book-container">
-      <h2 className='addbook-form-title'>Add Book Form </h2>
-      {error && <div className="error-message">{error}</div>}
-      {message && !error && <div className="success-message">{message}</div>}
-      <form className="add-book-form" onSubmit={handleSubmitBook}>
-        <input required type="text" name="title" placeholder="Title" value={formData.title} onChange={handleChange} className="form-input" />
-        <input required type="text" name="author" placeholder="Author" value={formData.author} onChange={handleChange} className="form-input" />
-        <input required type="text" name="genre" placeholder="Genre" value={formData.genre} onChange={handleChange} className="form-input" />
-        <textarea required name="description" placeholder="Description" value={formData.description} onChange={handleChange} className="form-textarea" />
-        <input required type="text" name="cover_image_url" placeholder="Cover Image URL" value={formData.cover_image_url} onChange={handleChange} className="form-input" />
-        <input required type="number" name="rental_price" placeholder="Rental Price" value={formData.rental_price} onChange={handleChange} className="form-input" />
-        <label className="form-label">
-          <input type="checkbox" name="available_for_rent" checked={formData.available_for_rent} onChange={handleChange} className="form-checkbox" />
-          Available for Rent
-        </label>
-        <input required type="text" name="condition" placeholder="Condition" value={formData.condition} onChange={handleChange} className="form-input" />
-        <button type="submit" className="form-submit-button">Add Book</button>
-      </form>
+    <div className="flex w-full h-screen">
+      <div className="w-full flex items-center justify-center lg:w-1/2">
+        <div className='w-11/12 max-w-[700px] px-10 py-20 rounded-3xl bg-white border-2 border-gray-100'>
+          <h1 className='text-5xl font-semibold text-black'>Add Book</h1>
+          <p className='font-medium text-lg text-gray-500 mt-4'>Please enter book details.</p>
+          {message && <div className={error ? "error-message" : "success-message"}>{message}</div>}
+          <form onSubmit={handleSubmitBook} className='mt-8'>
+            {Object.keys(initialFormData).map((key, index) => (
+              <div className='flex flex-col mt-4' key={index}>
+                <label htmlFor={key} className='text-lg font-medium text-black'>{key}</label>
+                <input
+                  id={key}
+                  name={key}
+                  value={formData[key]}
+                  onChange={handleChange}
+                  className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+                  placeholder={`Enter ${key}`}
+                  required={key !== 'available_for_rent'} 
+                  type={key === 'rental_price' ? 'number' : 'text'}
+                />
+              </div>
+            ))}
+            <div className='mt-8 flex flex-col gap-y-4'>
+              <button
+                type="submit"
+                className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4 bg-violet-500 rounded-xl text-white font-bold text-lg'>
+                Add Book
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div className="hidden relative w-1/2 h-full lg:flex items-center justify-center bg-gray-200">
+        <div className="w-60 h-60 rounded-full bg-gradient-to-tr from-violet-500 to-pink-500 animate-bounce" />
+        <div className="w-full h-1/2 absolute bottom-0 bg-white/10 backdrop-blur-lg" />
+      </div>
     </div>
   );
-};
-
+}
 export default AddBook;
