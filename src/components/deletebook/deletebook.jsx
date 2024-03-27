@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchBooks, deleteBook } from '../../actions/bookActions'; // Import deleteBook action
 import PropTypes from 'prop-types';
