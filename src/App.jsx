@@ -9,7 +9,7 @@ import BookDetail from './components/homepage/BookDetail';
 import Navigation from './components/NavPanel/Navigation';
 import { Provider } from 'react-redux';
 import AddBook from './components/addbook/AddBook';
-import DeleteBook from './components/deletebook/DeleteBook';
+import DeleteBook from './components/deletebook/Deletebook';
 
 
 const store = configureStore({
