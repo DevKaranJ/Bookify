@@ -52,9 +52,7 @@ export const fetchFavorites = () => {
     return async (dispatch, getState) => {
       dispatch(fetchFavoritesRequest());
       try {
-        const userId = getState().user.userInfo.data.id;
-        console.log(userId,bookId)
-  
+        const userId = getState().user.userInfo.data.id; // Assuming user info is stored under user.userInfo.data
         const response = await axios.get(
           `http://127.0.0.1:3000/api/v1/users/${userId}/favorites`,
           {
@@ -68,6 +66,7 @@ export const fetchFavorites = () => {
       }
     };
   };
+  
   
   // Thunk action for adding a book to favorites
 export const addToFavorites = (bookId) => {
