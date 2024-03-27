@@ -15,8 +15,8 @@ const bookReducer = (state = {
     case 'ADD_BOOK_FAILURE':
       return { ...state, isAdded: false, error: action.payload };
     case 'DELETE_BOOKS_SUCCESS':
-      const remainingBooks = state.list.filter(book => !action.payload.includes(book.id));
-      return { ...state, isDeleted: true, error: null, list: remainingBooks };
+      const currentBooks = state.list.filter(book => !action.payload.includes(book.id));
+      return { ...state, isDeleted: true, error: null, list: currentBooks };
     case 'DELETE_BOOKS_FAILURE':
       return { ...state, isDeleted: false, error: action.payload};
     default:
