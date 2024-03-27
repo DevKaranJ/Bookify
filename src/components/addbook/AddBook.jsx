@@ -7,11 +7,10 @@ import './AddBook.css';
 const AddBook = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { userId } = useSelector((state) => state.user);
   const { isAdded, error } = useSelector((state) => state.books);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [message, setMessage] = useState('');
-
+  const userId = localStorage.getItem('id');
   const initialFormData = {
     title: '',
     author: '',
@@ -40,7 +39,7 @@ const AddBook = () => {
   useEffect(() => {
     if (isAdded && isSubmitted) {
       setMessage('Book is Successfully Added');
-      navigate('/addbook');
+      navigate('/booklist');
     } else if (error && isSubmitted) {
       setMessage('Sorry, something happened');
     }

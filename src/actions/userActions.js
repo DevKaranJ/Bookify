@@ -46,10 +46,12 @@ export const userLogin = (userData) => async (dispatch) => {
         const accessToken = response.headers['access-token'];
         const client = response.headers['client'];
         const uid = response.headers['uid'];
+        const userId = response.data.data.id;
 
         localStorage.setItem('access-token', accessToken);
         localStorage.setItem('client', client);
         localStorage.setItem('uid', uid);
+        localStorage.setItem('id', userId);
         
         dispatch(loginUser(response.data));
     }
