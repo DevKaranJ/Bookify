@@ -1,18 +1,24 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false);
-
     const location = useLocation();
+    const navigate = useNavigate();
 
-  // Check if the current location is either sign-in or sign-up
-  const isAuthPage = location.pathname === '/' || location.pathname === '/signup';
+    const isAuthPage = location.pathname === '/' || location.pathname === '/signup';
 
-  // If it's an authentication page, don't render the navigation
-  if (isAuthPage) {
-    return null;
-  }
+    if (isAuthPage) {
+        return null;
+    }
+
+    const handleLogout = () => {
+        localStorage.removeItem('access-token');
+        localStorage.removeItem('client');
+        localStorage.removeItem('uid');
+        localStorage.removeItem('id');
+        navigate('/');
+    };
 
     return (
         <nav className="flex items-center justify-between flex-wrap bg-gray-500 p-6">
@@ -38,6 +44,9 @@ const Navigation = () => {
                     <Link to="/deletebook" className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white">
                         Delete Book
                     </Link>
+                    <button onClick={handleLogout} className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white">
+                    Logout
+                </button>
                 </div>
             </div>
         </nav>
