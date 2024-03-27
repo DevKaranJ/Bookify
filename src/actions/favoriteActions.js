@@ -58,9 +58,11 @@ export const fetchFavorites = () => {
           {
             headers: headers
           }
+        
         );
-  
-        dispatch(fetchFavoritesSuccess(response.data.data));
+     console.log(response.data)
+        dispatch(fetchFavoritesSuccess(response.data));
+        console.log(response.data)
       } catch (error) {
         dispatch(fetchFavoritesFailure(error.message));
       }
