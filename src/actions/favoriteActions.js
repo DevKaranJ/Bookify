@@ -95,6 +95,7 @@ export const addToFavorites = (bookId) => {
         });
         console.log(response);
         dispatch(addToFavoritesSuccess(response.data.data));
+        dispatch(fetchFavorites());
       } catch (error) {
         dispatch(addToFavoritesFailure(error.message));
       }

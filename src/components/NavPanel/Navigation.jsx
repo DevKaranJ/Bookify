@@ -6,7 +6,7 @@ const Navigation = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const isAuthPage = location.pathname === '/' || location.pathname === '/signup';
+    const isAuthPage = location.pathname === '/' || location.pathname === '/signup' || location.pathname === '/login';
 
     if (isAuthPage) {
         return null;
@@ -29,27 +29,27 @@ const Navigation = () => {
                 </button>
             </div>
             <div className={`${isOpen ? 'flex' : 'hidden'} w-full block flex-grow lg:flex lg:items-center lg:w-auto lg:justify-end`}>
-    <div className="text-sm">
-        <Link to="/booklist" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-200 mr-4">
-            Books
-        </Link>
-        <Link to="/favorites" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-200 mr-4">
-            My Favorites
-        </Link>
-        <Link to="/addbook" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-200 mr-4">
-            Add Book
-        </Link>
-        <Link to="/deletebook" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-200">
-            Delete Book
-        </Link>
-        <button 
-            onClick={handleLogout} 
-            className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-200"
-        >
-            Logout
-        </button>
-    </div>
-</div>
+                <div className="text-sm">
+                    <Link to="/booklist" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-200 mr-4">
+                        Books
+                    </Link>
+                    <Link to="/favorites" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-200 mr-4">
+                        My Favorites
+                    </Link>
+                    <Link to="/addbook" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-200 mr-4">
+                        Add Book
+                    </Link>
+                    <Link to="/deletebook" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-200">
+                        Delete Book
+                    </Link>
+                    <button 
+                        onClick={handleLogout} 
+                        className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-200"
+                    >
+                        Logout
+                    </button>
+                </div>
+            </div>
         </nav>
     );
 };
