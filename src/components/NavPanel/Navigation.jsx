@@ -1,7 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
-const Navigation = () => {
+const Navigation = ({ userRole }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const location = useLocation();
@@ -32,16 +33,24 @@ const Navigation = () => {
                     <Link to="/favorites" className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
                         My Favorites
                     </Link>
-                    <Link to="/addbook" className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
-                        Add Book
-                    </Link>
-                    <Link to="/deletebook" className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white">
-                        Delete Book
-                    </Link>
+                    {userRole === 'admin' && (
+                        <>
+                            <Link to="/addbook" className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
+                                Add Book
+                            </Link>
+                            <Link to="/deletebook" className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white">
+                                Delete Book
+                            </Link>
+                        </>
+                      )}
                 </div>
             </div>
         </nav>
     );
 };
 
-export default Navigation;
+const mapStateToProps = state => ({
+    userRole: state.user.userRole 
+  });
+  
+  export default connect(mapStateToProps)(Navigation);
