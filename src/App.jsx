@@ -9,8 +9,12 @@ import BookList from './components/homepage/BookList';
 import BookDetail from './components/homepage/BookDetail';
 import Navigation from './components/NavPanel/Navigation';
 import { Provider } from 'react-redux';
+
+import Favorites from './components/favorites/Favorites';
+
 import AddBook from './components/addbook/AddBook';
 import DeleteBook from './components/deletebook/Deletebook';
+
 
 
 const store = configureStore({
@@ -30,8 +34,12 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/booklist" element={<BookList />} />
             <Route path="/book/:id" element={<BookDetail />} />
+
+            <Route path="/favorites" element={<Favorites />} />
+
             <Route path="/addbook" element={<AddBook />} />
             <Route path="/deletebook" element={<DeleteBook />} />
+
           </Routes>
         </div>
       </Router>
