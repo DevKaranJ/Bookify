@@ -26,6 +26,14 @@
 
 ** Bookify-App** is a simple book reserve App where User Can add remove their favorite book items from different category. This App is build on Rails + React framework.
 
+## Links </a>
+https://github.com/users/AlierPM/projects/4
+<li><a href="https://github.com/users/AlierPM/projects/4">KanBan Board</a></li>
+<li><a href="https://github.com/AlierPM/bookify-backend">Backend Repo</a></li>
+
+![Screenshot 2024-03-28 174504](https://github.com/AlierPM/bookify-frontend/assets/60401323/9033e43c-7077-4d4b-92f2-74819a8ed9e8)
+
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
@@ -112,15 +120,6 @@ To run the server:
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### Run tests
-
-To run tests, run the following command:
-
- ```
- rspec spec/
-
- ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
