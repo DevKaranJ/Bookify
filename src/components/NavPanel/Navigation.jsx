@@ -126,7 +126,7 @@ const Navigation = () => {
                 <div className="fixed top-0 left-0 z-50 lg:hidden">
                     <button 
                         onClick={() => setIsOpen(!isOpen)} 
-                        className="p-3 text-white hover:text-gray-200"
+                        className="p-3 text-black hover:text-gray-200"
                     >
                         <svg className="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <title>Menu</title>
