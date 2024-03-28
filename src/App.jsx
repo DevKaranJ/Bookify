@@ -12,7 +12,7 @@ import { Provider } from 'react-redux';
 import Favorites from './components/favorites/Favorites';
 
 import AddBook from './components/addbook/AddBook';
-import DeleteBook from './components/deletebook/Deletebook';
+import DeleteBook from './components/deletebook/DeleteBook';
 
 
 
