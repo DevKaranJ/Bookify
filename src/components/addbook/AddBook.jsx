@@ -52,45 +52,45 @@ const AddBook = () => {
           <p className='font-medium text-lg text-gray-500 mt-4'>Please enter book details.</p>
           {message && <div className={error ? "error-message" : "success-message"}>{message}</div>}
           <form onSubmit={handleSubmitBook} className='mt-8'>
-  {Object.keys(initialFormData).filter(key => key !== 'User_id').map((key, index) => (
-    <div className='flex flex-col mt-4' key={index}>
-      <label htmlFor={key} className='text-lg font-medium text-black'>{key}</label>
-      {key === 'Available_for_rent' || key === 'Condition' ? (
-        <select
-          id={key}
-          name={key}
-          value={formData[key]}
-          onChange={handleChange}
-          className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent text-black'
-          required={key !== 'Available_for_rent'}
-        >
-          <option value="">Select {key}</option>
-          {key === 'Available_for_rent' ? (
-            <>
-              <option value={true}>Yes</option>
-              <option value={false}>No</option>
-            </>
-          ) : (
-            <>
-              <option value="new">New</option>
-              <option value="used">Used</option>
-            </>
-          )}
-        </select>
-      ) : (
-        <input
-          id={key}
-          name={key}
-          value={formData[key]}
-          onChange={handleChange}
-          className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent text-black'
-          placeholder={`Enter ${key}`}
-          required={key !== 'Available_for_rent'} 
-          type={key === 'Rental_price' ? 'number' : 'text'}
-        />
-      )}
-    </div>
-  ))}
+          {Object.keys(initialFormData).filter(key => key !== 'user_id').map((key, index) => (
+  <div className='flex flex-col mt-4' key={index}>
+    <label htmlFor={key} className='text-lg font-medium text-black'>{key}</label>
+    {key === 'available_for_rent' || key === 'condition' ? (
+      <select
+        id={key}
+        name={key}
+        value={formData[key]}
+        onChange={handleChange}
+        className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent text-black'
+        required={key !== 'available_for_rent'}
+      >
+        <option value="">Select {key}</option>
+        {key === 'available_for_rent' ? (
+          <>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+          </>
+        ) : (
+          <>
+            <option value="new">New</option>
+            <option value="used">Used</option>
+          </>
+        )}
+      </select>
+    ) : (
+      <input
+        id={key}
+        name={key}
+        value={formData[key]}
+        onChange={handleChange}
+        className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent text-black'
+        placeholder={`Enter ${key}`}
+        required={key !== 'available_for_rent'} 
+        type={key === 'rental_price' ? 'number' : 'text'}
+      />
+    )}
+  </div>
+))}
   <div className='mt-8 flex flex-col gap-y-4'>
     <button
       type="submit"
