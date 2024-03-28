@@ -80,8 +80,8 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```
-  cd my-folder
-  git clone https://github.com/AlierPM/bookify-backend
+  git clone https://github.com/AlierPM/bookify-endpoints.git
+  cd bookify-endpoints
 
 ```
 ### Install
@@ -104,7 +104,6 @@ Create database:
 To run the server:
 
 ```
- rails assets:precompile
  
  rails server
 
@@ -112,14 +111,8 @@ To run the server:
 
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### Run tests
+Frontend is available at [here]( )
 
-To run tests, run the following command:
-
- ```
- rspec spec/
-
- ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -131,14 +124,14 @@ To run tests, run the following command:
 - GitHub: [@the-faizmohammad](https://github.com/the-faizmohammad)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/faiz-mohammad-967354142/)
 
-## 👥 Authors <a name="authors"></a>
+
 
 👤 **Alier Philip**
 
 - GitHub: [@AlierPM](https://github.com/AlierPM)
 - Twitter: [Twitter](https://twitter.com/AlierPM)
 
-## 👥 Authors <a name="authors"></a>
+
 
 👤 **Karan Joshi**
 
@@ -147,14 +140,14 @@ To run tests, run the following command:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 👥 Authors <a name="authors"></a>
+
 
 👤 **Omet Omeni**
 
 - GitHub: [@ometman](https://github.com/ometman)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/ometman/)
 
-## 👥 Authors <a name="authors"></a>
+
 
 👤 **Afimia Fidelis Izebiafe**
 
@@ -164,7 +157,7 @@ To run tests, run the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Add a wireframe**
+- [ ] **Awesome UX user dashboard**
 - [ ] **Develop the app and add features to  buy a book online.**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -187,8 +180,9 @@ If you like this project Add a star to the repository!
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank author Alexey Savitskiy on behance for using the design which falls under creative comman license.
-- https://www.behance.net/gallery/37706679/Circle-(Landing-page-Dashboard-Mobile-App)
+we would like to thank author Alexey Savitskiy on behance for using the design which falls under creative comman license.
+
+[ Visit the Design here ](https://www.behance.net/gallery/37706679/Circle-(Landing-page-Dashboard-Mobile-App))
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
