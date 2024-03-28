@@ -54,7 +54,6 @@ export const userLogin = (userData) => async (dispatch) => {
         localStorage.setItem('client', client);
         localStorage.setItem('uid', uid);
         localStorage.setItem('id', userId);
-        
         dispatch(loginUser(response.data));
     }
     catch (error) {

@@ -5,9 +5,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
     name: "user",
     initialState: {
+        userInfo: null,
         isAuthenticated: false,
         userInfo: null, 
-       userId: '', 
+       userId: '',
+      userRole: 'user',
       error: null
     },
     reducers: {
@@ -22,6 +24,7 @@ const userSlice = createSlice({
             state.userInfo = action.payload;
             state.isAuthenticated = true; // Set isAuthenticated to true after successful login
             state.userId = action.payload.data.id;
+            state.userRole = action.payload.data.role;
         },
         loginError: (state, action) => {
             state.error = action.payload;
