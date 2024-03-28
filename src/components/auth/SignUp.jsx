@@ -37,7 +37,7 @@ const SignUp = () => {
                 name="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+                className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent text-black'
                 placeholder="Enter your name"
                 required />
             </div>
