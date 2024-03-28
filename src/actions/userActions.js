@@ -1,5 +1,7 @@
-import { registerError, registerUser, loginUser, loginError } from "../reducers/userReducer";
+
+import { registerError, registerUser, loginUser, loginError, logoutUser } from "../reducers/userReducer";
 import axios from 'axios';
+
 
 // user registration
 export const userRegister = (userData) => async (dispatch) => {
@@ -57,5 +59,20 @@ export const userLogin = (userData) => async (dispatch) => {
     catch (error) {
         console.error('Error during login:', error.message);
         dispatch(loginError(error.message));
+    }
+};
+
+// user logout
+export const userLogout = () => async (dispatch) => {
+    try {
+        // Additional cleanup tasks if necessary
+        localStorage.removeItem('access-token');
+        localStorage.removeItem('client');
+        localStorage.removeItem('uid');
+        
+        dispatch(logoutUser());
+    }
+    catch (error) {
+        console.error('Error during logout:', error.message);
     }
 };
