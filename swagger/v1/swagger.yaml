@@ -1,0 +1,86 @@
+swagger: '3.0'
+info:
+  version: '1.0.0'
+  title: Books and Favorites API
+paths:
+  /api/v1/books:
+    get:
+      summary: Fetch all books
+      responses:
+        '200':
+          description: A list of books
+  /api/v1/books/{id}:
+    get:
+      summary: Fetch book details
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Book details
+    post:
+      summary: Add a new book
+      parameters:
+        - in: body
+          name: book
+          required: true
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+              author:
+                type: string
+              description:
+                type: string
+      responses:
+        '200':
+          description: Book added
+    delete:
+      summary: Delete a book
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Book deleted
+  /api/v1/books/mybooks:
+    get:
+      summary: Fetch user's books
+      responses:
+        '200':
+          description: A list of user's books
+  /api/v1/users/{userId}/favorites:
+    get:
+      summary: Fetch user's favorites
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: A list of user's favorite books
+    post:
+      summary: Add a book to favorites
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          type: string
+        - in: body
+          name: book
+          required: true
+          schema:
+            type: object
+            properties:
+              book_id:
+                type: string
+      responses:
+        '200':
+          description: Book added to favorites
+
