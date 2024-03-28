@@ -11,15 +11,15 @@ const AddBook = () => {
   const [message, setMessage] = useState('');
   const userId = localStorage.getItem('id');
   const initialFormData = {
-    Title: '',
-    Author: '',
-    Genre: '',
-    Description: '',
-    Cover_image_url: '',
-    Rental_price: '',
-    Available_for_rent: false,
-    Condition: '',
-    User_id: userId,
+    title: '',
+    author: '',
+    genre: '',
+    description: '',
+    cover_image_url: '',
+    rental_price: '',
+    available_for_rent: false,
+    condition: '',
+    user_id: userId,
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -32,7 +32,7 @@ const AddBook = () => {
   const handleSubmitBook = (e) => {
     e.preventDefault();
     setIsSubmitted(true);
-    dispatch(addABook(formData));
+    dispatch(addABook({ book: formData }));
   };
 
   useEffect(() => {
