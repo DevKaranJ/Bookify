@@ -97,8 +97,6 @@ Clone this repository to your desired folder:
 
 Install the dependencies:
 
-- gem install
-
 - yarn install/npm install
 
 Create database:
