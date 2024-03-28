@@ -15,6 +15,7 @@ const userSlice = createSlice({
         loginUser: (state, action) => {
             state.userInfo = action.payload;
             state.userId = action.payload.data.id;
+            state.userRole = action.payload.data.role;
         },
         loginError: (state, action) => {
             state.error = action.payload;
