@@ -17,6 +17,7 @@ const BookList = ({ dispatch, books }) => {
   return (
     <div className="flex flex-col h-screen bg-gray-200">
       <div className="flex flex-col items-center justify-center p-5">
+      <h1 className='text-5xl font-semibold text-black mb-4'>Book</h1>
         {books.map(book => (
           <div key={book.id} className="flex flex-col lg:flex-row p-4 bg-white rounded-3xl shadow-lg w-full lg:w-1/2 mb-5 border-2 border-gray-100">
             <div className="w-full lg:w-1/2 h-48 lg:h-auto overflow-hidden">

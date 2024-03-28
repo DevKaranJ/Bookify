@@ -16,13 +16,15 @@ const Favorites = () => {
 
   return (
     <div className="flex flex-col h-screen bg-gray-200">
-      <div className="flex flex-col items-center justify-center p-5">
-        {loading ? (
-          <div className="text-gray-700">Loading...</div>
-        ) : error ? (
-          <div className="text-red-600">Error: {error}</div>
-        ) : (
-          favorites.map(favorite => (
+    <div className="flex flex-col items-center justify-center p-5">
+      {loading ? (
+        <div className="text-gray-700">Loading...</div>
+      ) : error ? (
+        <div className="text-red-600">Error: {error}</div>
+      ) : favorites.length === 0 ? (
+        <div className="text-gray-700">Please add some books to your favorites.</div>
+      ) : (
+        favorites.map(favorite => (
             <div key={favorite.id} className="flex flex-col lg:flex-row p-4 bg-white rounded-3xl shadow-lg w-full lg:w-1/2 mb-5 border-2 border-gray-100">
               <div className="w-full lg:w-1/2 h-48 lg:h-auto overflow-hidden">
                 <img className="w-full h-full object-cover" src={favorite.book.cover_image_url} alt={favorite.book.title} />

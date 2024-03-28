@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchBookDetails } from '../../actions/bookActions';
-import { addToFavorites } from '../../actions/favoriteActions'; // Import the new action
+import { addToFavorites } from '../../actions/favoriteActions';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 
-const BookDetail = ({ dispatch, book, isAuthenticated }) => { // Add isAuthenticated to props
+const BookDetail = ({ dispatch, book, isAuthenticated }) => {
   const { id } = useParams();
+  const [isAddedToFavorites, setIsAddedToFavorites] = useState(false);
 
   useEffect(() => {
     dispatch(fetchBookDetails(id));
@@ -15,9 +16,9 @@ const BookDetail = ({ dispatch, book, isAuthenticated }) => { // Add isAuthentic
   const handleAddToFavorites = () => {
     console.log('handleAddToFavorites called');
     if (isAuthenticated) {
-      dispatch(addToFavorites(book.id)); // Dispatch the action to add to favorites
+      dispatch(addToFavorites(book.id));
+      setIsAddedToFavorites(true);
     } else {
-      // Handle case where user is not authenticated (e.g., show a message or redirect to login)
       console.log('User is not authenticated. Please log in to add to favorites.');
     }
   };
@@ -40,8 +41,12 @@ const BookDetail = ({ dispatch, book, isAuthenticated }) => { // Add isAuthentic
         <p className="text-gray-700">Available for Rent: <span className="font-semibold">{book.available_for_rent ? 'Yes' : 'No'}</span></p>
         <p className="text-gray-700">Condition: <span className="font-semibold">{book.condition}</span></p>
         <button onClick={handleAddToFavorites}
-         className="mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" type="button">
-          Add to favourite</button>
+          className={`mt-4 font-bold py-2 px-4 rounded ${isAddedToFavorites ? 'bg-green-500 hover:bg-green-700' : 'bg-orange-500 hover:bg-orange-700'} text-white`}
+          type="button"
+          disabled={isAddedToFavorites}
+        >
+          {isAddedToFavorites ? 'Added to favorites' : 'Add to favorite'}
+        </button>
       </div>
     </div>
   );
@@ -50,12 +55,12 @@ const BookDetail = ({ dispatch, book, isAuthenticated }) => { // Add isAuthentic
 BookDetail.propTypes = {
   dispatch: PropTypes.func.isRequired,
   book: PropTypes.object,
-  isAuthenticated: PropTypes.bool.isRequired, // Add isAuthenticated prop type
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = state => ({ 
+const mapStateToProps = state => ({
   book: state.books.selectedBook,
-  isAuthenticated: state.user.isAuthenticated, // Map isAuthenticated from Redux state
+  isAuthenticated: state.user.isAuthenticated,
 });
 
 export default connect(mapStateToProps)(BookDetail);
