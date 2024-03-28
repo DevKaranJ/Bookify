@@ -99,25 +99,17 @@ Install the dependencies:
 
 - yarn install/npm install
 
-Create database:
-
-- bin/rails db:create
-
-- bin/rails db:seed
-(to populate database with sample data)
 
 ### Usage
 
 To run the server:
 
 ```
- rails assets:precompile
- 
- rails server
+ npm run dev
 
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
