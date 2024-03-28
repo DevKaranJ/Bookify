@@ -19,6 +19,6 @@ export default {
 			xl: '1700px',
 		},
 	},
-	plugins: [require('daisyui')],
+	plugins: [import('daisyui')],
 	// plugins: [],
 };

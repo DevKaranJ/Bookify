@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchBooks, deleteBook } from '../../actions/bookActions'; // Import deleteBook action
 import PropTypes from 'prop-types';
@@ -34,26 +34,29 @@ const DeleteBook = ({ dispatch, books }) => {
   }, [selectedBooks]);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-      {books.map(book => (
-        <div key={book.id} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
-          <div className="flex-1 bg-white p-6 flex flex-row justify-between items-center">
-            <div className="w-3/4"> {/* Set width to 70% for the title */}
-              <Link to={`/book/${book.id}`} className="mt-2 block text-lg leading-7 font-light text-gray-700 hover:text-gray-600 truncate">
-                <div className="truncate">{book.title}</div>
-              </Link>
-            </div>
-            <div className="w-1/4 flex justify-end"> {/* Set width to 30% for the button and align to end */}
-              <button 
-                onClick={() => handleDeleteBook(book.id)} 
-                className={`mt-2 block text-lg leading-7 font-semibold text-white py-2 px-4 rounded-lg transition duration-300 ease-in-out ${selectedBooks.includes(book.id) ? 'bg-gray-600 hover:bg-gray-700 text-sm' : 'bg-red-600 hover:bg-red-700'}`}
-              >
-                {selectedBooks.includes(book.id) ? "Removed" : "Delete"}
-              </button>
+    <div className="flex flex-col items-center justify-center p-4">
+      <h1 className='text-5xl font-semibold text-black mb-4'>Delete Book</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
+        {books.map(book => (
+          <div key={book.id} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+            <div className="flex-1 bg-white p-6 flex flex-col justify-between items-center">
+              <div className="w-full text-center mb-4">
+                <Link to={`/book/${book.id}`} className="block text-lg leading-7 font-light text-gray-700 hover:text-gray-600 truncate">
+                  <div className="truncate">{book.title}</div>
+                </Link>
+              </div>
+              <div className="w-full flex justify-center">
+                <button 
+                  onClick={() => handleDeleteBook(book.id)} 
+                  className={`block text-lg leading-7 font-semibold text-white py-2 px-4 rounded-lg transition duration-300 ease-in-out ${selectedBooks.includes(book.id) ? 'bg-gray-600 hover:bg-gray-700 text-sm' : 'bg-red-600 hover:bg-red-700'}`}
+                >
+                  {selectedBooks.includes(book.id) ? "Removed" : "Delete"}
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

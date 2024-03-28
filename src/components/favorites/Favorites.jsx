@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchFavorites } from '../../actions/favoriteActions';
+import { Link } from 'react-router-dom';
 
 const Favorites = () => {
   const dispatch = useDispatch();
@@ -14,27 +15,37 @@ const Favorites = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg-white shadow-md rounded-md p-4">
-      <h2 className="text-2xl font-semibold mb-4 text-orange-600">My Favorites</h2>
+    <div className="flex flex-col h-screen bg-gray-200">
+    <div className="flex flex-col items-center justify-center p-5">
       {loading ? (
         <div className="text-gray-700">Loading...</div>
       ) : error ? (
         <div className="text-red-600">Error: {error}</div>
+      ) : favorites.length === 0 ? (
+        <div className="text-gray-700">Please add some books to your favorites.</div>
       ) : (
-        <div className="grid grid-cols-2 gap-4">
-          {favorites.map(favorite => (
-            <div key={favorite.id} className="bg-gray-100 rounded-md p-4">
-              <h3 className="text-lg font-semibold text-green-600">{favorite.book.title}</h3>
-              <p className="text-gray-600">by {favorite.book.author}</p>
-              <p className="text-gray-600">Genre: {favorite.book.genre}</p>
-              <p className="text-gray-600 mt-2">{favorite.book.description}</p>
-              <p className="text-gray-600">Rental Price per month: {favorite.book.rental_price}</p>
-              <p className="text-gray-600">Available for Rent: {favorite.book.available_for_rent ? 'Yes' : 'No'}</p>
-              <p className="text-gray-600">Condition: {favorite.book.condition}</p>
+        favorites.map(favorite => (
+            <div key={favorite.id} className="flex flex-col lg:flex-row p-4 bg-white rounded-3xl shadow-lg w-full lg:w-1/2 mb-5 border-2 border-gray-100">
+              <div className="w-full lg:w-1/2 h-48 lg:h-auto overflow-hidden">
+                <img className="w-full h-full object-cover" src={favorite.book.cover_image_url} alt={favorite.book.title} />
+              </div>
+              <div className="w-full lg:w-1/2 flex flex-col p-4">
+                <Link to={`/book/${favorite.book.id}`} className="mt-2 block text-2xl font-bold mb-2 text-violet-500 hover:text-gray-600">
+                  {favorite.book.title}
+                </Link>
+                <p className="text-gray-700">by {favorite.book.author}</p>
+                <div className="mt-2 text-sm text-gray-500">
+                  <p>Genre: {favorite.book.genre}</p>
+                  <p>{favorite.book.description}</p>
+                  <p>Rental Price per month: ${favorite.book.rental_price}</p>
+                  <p>Available for Rent: {favorite.book.available_for_rent ? 'Yes' : 'No'}</p>
+                  <p>Condition: {favorite.book.condition}</p>
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
-      )}
+          ))
+        )}
+      </div>
     </div>
   );
 };

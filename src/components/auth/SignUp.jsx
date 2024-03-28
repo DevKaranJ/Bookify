@@ -1,4 +1,3 @@
-// src/components/auth/SignUp.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -21,54 +20,62 @@ const SignUp = () => {
     };
 
     dispatch(userRegister(userData));
-    navigate('/');
+    navigate('/Login');
   };
 
   return (
-    <div className="container mx-auto mt-10">
-      <h1 className="text-3xl font-bold text-center mb-6">SignUp</h1>
-      <p className="text-center">Welcome to Bookify Registration Page</p>
-      <form onSubmit={handleRegistration} className="mt-8 max-w-md mx-auto">
-        <label className="block mb-4">
-          <span className="text-gray-700">Enter your Name:</span>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="form-input mt-1 block w-full border rounded-md py-2 px-3 focus:outline-none focus:border-blue-400"
-            placeholder="Enter your Name"
-            required
-          />
-        </label>
-        <label className="block mb-4">
-          <span className="text-gray-700">Enter your Email:</span>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="form-input mt-1 block w-full border rounded-md py-2 px-3 focus:outline-none focus:border-blue-400"
-            placeholder="Enter your Email"
-            required
-          />
-        </label>
-        <label className="block mb-4">
-          <span className="text-gray-700">Enter your Password:</span>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="form-input mt-1 block w-full border rounded-md py-2 px-3 focus:outline-none focus:border-blue-400"
-            placeholder="Enter your Password"
-            required
-          />
-        </label>
-        <button
-          type="submit"
-          className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-6 focus:outline-none focus:shadow-outline"
-        >
-          Sign up
-        </button>
-      </form>
+    <div className="flex w-full h-screen">
+      <div className="w-full flex items-center justify-center lg:w-1/2">
+        <div className='w-11/12 max-w-[700px] px-10 py-20 rounded-3xl bg-white border-2 border-gray-100'>
+          <h1 className='text-5xl font-semibold text-black'>Register</h1>
+          <p className='font-medium text-lg text-gray-500 mt-4'>Welcome back! Please enter your details.</p>
+          <form onSubmit={handleRegistration} className='mt-8'>
+            <div className='flex flex-col'>
+              <label htmlFor='name' className='text-lg font-medium text-black'>Name</label>
+              <input
+                id='name'
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent text-black'
+                placeholder="Enter your name"
+                required />
+            </div>
+            <div className='flex flex-col mt-4'>
+              <label className='text-lg font-medium text-black'>Email</label>
+              <input
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className='w-full border-2 border-gray-100 text-black rounded-xl p-4 mt-1 bg-transparent'
+                placeholder="Enter your email"
+                required />
+            </div>
+            <div className='flex flex-col mt-4'>
+              <label className='text-lg font-medium text-black'>Password</label>
+              <input
+                name="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className='w-full border-2 border-gray-100 text-black rounded-xl p-4 mt-1 bg-transparent'
+                placeholder="Enter your password"
+                required />
+            </div>
+            <div className='mt-8 flex flex-col gap-y-4'>
+              <button
+                type="submit"
+                className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4 bg-violet-500 rounded-xl text-white font-bold text-lg'>
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div className="hidden relative w-1/2 h-full lg:flex items-center justify-center bg-gray-200">
+        <div className="w-60 h-60 rounded-full bg-gradient-to-tr from-violet-500 to-pink-500 animate-bounce" />
+        <div className="w-full h-1/2 absolute bottom-0 bg-white/10 backdrop-blur-lg" />
+      </div>
     </div>
   );
 };
