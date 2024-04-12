@@ -41,10 +41,6 @@ https://github.com/users/AlierPM/projects/4
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://developer.mozilla.org/ru/docs/Web/HTML">HTML</a></li>
-    <li><a href="https://developer.mozilla.org/ru/docs/Web/CSS">CSS</a></li>
-    <li><a href="https://react.dev/">React.js</a></li>
-    li>
     <li><a href="https://rubyonrails.org/">Rails</a></li>
   </ul>
 </details>
